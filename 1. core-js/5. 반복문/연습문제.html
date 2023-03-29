@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // Math.random(): 0.0이상 1.0미만의 랜덤값.
+        // Math.floor(): 내림, Math.ceil(): 올림, Math.round(): 반올림
+        // var rn1 = Math.floor((Math.random()*100) + 1);
+
+        // var result;
+        while (true) {
+            var rn1 = Math.floor((Math.random() * 20) + 1);
+            var rn2 = Math.floor((Math.random() * 20) + 1);
+            var rn3 = Math.floor(Math.random() * 3);
+            if (rn3 === 0) {
+                rn3 = '+';
+                result = rn1 + rn2;
+            } else if (rn3 === 1) {
+                rn3 = '-';
+                result = rn1 - rn2;
+            } else {
+                rn3 = '*';
+                result = rn1 * rn2;
+            }
+            
+            var point = prompt(`${rn1} ${rn3} ${rn2} = ???`);
+            if (point == '그만') break;
+            
+            var result = point == result ? '정답입니다' : '오답입니다';
+            alert(`${result}`);
+        }
+    </script>
+
+</body>
+
+</html>
