@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var cCount = 0, iCount = 0;
+
+        while(true) {
+            //문제를 만들기 위한 정수 난수 두 개 생성
+            var rn1 = Math.floor((Math.random() * 20) + 1);
+            var rn2 = Math.floor((Math.random() * 20) + 1);
+
+            //부호를 결정하기 위한 0 1 2의 랜덤 정수 난수 생성
+            var rn3 = Math.floor(Math.random() * 3);
+
+            var realAnswer, operatorMark;
+            if(rn3 === 0) {
+                operatorMark = '+';
+                realAnswer = rn1 + rn2;
+            } else if (rn3 === 1) {
+                operatorMark = '-';
+                realAnswer = rn1 - rn2;
+            } else {
+                operatorMark = 'X';
+                realAnswer = rn1 * rn2;
+            }
+
+            var answer = prompt(`${rn1} ${operatorMark} ${rn2} = ???`);
+
+            if(answer === '그만') break;
+            if(answer == realAnswer) {
+                alert('정답입니다');
+                cCount++;
+            } else {
+                alert('오답입니다');
+                iCount++;
+            }
+        }
+
+        alert(`프로그램이 종료되었습니다.
+        # 정답횟수: ${cCount}
+        # 오답횟수: ${iCount}`);
+
+    </script>
+
+</body>
+</html>
