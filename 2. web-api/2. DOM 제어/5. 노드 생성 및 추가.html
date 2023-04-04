@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul id="fruits">
+        <li>Aplle</li>
+    </ul>
+
+
+    <script>
+
+        const $fruits = document.getElementById('fruits')
+
+        // 1. 요소 노드 생성(추가는 따로입니다.)
+        const $newLi = document.createElement('li');
+
+        // 2. 텍스트 삽입
+        $newLi.textContent = 'Banana';
+
+        // 3. ul에 새로운 li노드 추가
+        $fruits.appendChild($newLi);
+
+
+
+    </script>
+
+</body>
+</html>

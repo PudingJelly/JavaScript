@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul id="list">
+        <li>리스트1</li>
+        <li>리스트2</li>
+        <li>리스트3</li>
+        <li>리스트4</li>
+        <li>리스트5</li>
+        <li>리스트6</li>
+        <li>리스트7</li>
+    </ul>
+
+    <script>
+        //1. id = "list"인 요소에 <li> 요소 중 
+        //홀수번째 요소만 선택 후 배경색상 yellow 적용.
+        const $odd = document.querySelectorAll('#list>li:nth-child(odd)');
+        for(let $li of [...$odd]){
+            $li.style.background = 'yellow';
+        }     
+        // const $odd1 = document.querySelectorAll('#list>li');
+        // for(let i=0; i<$odd1.length; i++){
+        //     if(i%2===0){
+        //         $odd1[i].style.background = 'yellow'
+        //     }
+        // }
+
+        //2. id="list"인 요소에 <li> 요소중 짝수번째 요소만
+        //선택 후 배경색상 gray 적용.
+        const $even = document.querySelectorAll('#list>li:nth-child(even)');
+        // for(let $li of [...$even]){
+        //     $li.style.background = 'gray';
+        // }
+        // forEach 함수는 배열, 노드리스트 가능, HTMLCollection 불가
+        // 그냥 맘편하게 배열로 변경해서 사용하는 것을 권장.
+        // [...$even].forEach(function($li)){ 
+        //     $li.style.background = 'gray';
+        // }
+
+        [...$even].forEach($li => $li.style.background = 'gray');
+
+        //3. id="list"인 요소에 <li> 요소중 첫번째 li 요소만
+        //선택 후 폰트 색상 red 적용.
+        // const $first = document.querySelector('#list>li:first-child');
+        // $first.style.color = 'red';
+        const $first = document.querySelector('#list>li:first-child').style.color = 'red';
+
+        //4. id="list"인 요소에 <li> 요소중 마지막 li 요소만
+        //선택 후 폰트 색상 green 적용.
+        const $last = document.querySelector('#list>li:last-child');
+        $last.style.color = 'green';
+        // const $last = document.querySelector('#list>li:last-child').style.color = 'green';
+
+        //5. id="list"인 요소에 <li> 요소 중 두번째 li요소만
+        //선택 후 이탤릭체 적용.
+        // const $second = document.querySelector('#list>li:nth-child(2)');
+        // $second.style.fontStyle = 'italic';
+        const $second = document.querySelector('#list>li:nth-child(2)').style.fontStyle = 'italic';
+        
+        //6. id="list"인 요소에 <li> 요소 중 3번째 이전 요소만
+        //경계선을 2px dotted aqua 적용. (1, 2번째만 선택)
+        const $beforeThree = document.querySelectorAll('#list>li:nth-child(-n+2)');
+        // for(let $li of $beforeThree) {
+        //     $li.style.border = '2px dotted aqua';
+        // }        
+        [...$beforeThree].forEach($li => $li.style.border = '2px dotte aqua');
+
+        //7. id="list"인 요소에 <li> 요소 중 3번째 이후 요소만
+        //경계선을 2px dashed violet 적용 (3번째부터 끝까지 선택)
+        const $afterThree = document.querySelectorAll('#list>li:nth-child(n+3)');
+        for(let $li of $afterThree) {
+            $li.style.border = '2px dashed violet';
+        }
+        // [...$afterThree].forEach($li => $li.style.border = '2px dashed violet');
+
+
+    </script>
+
+</body>
+</html>

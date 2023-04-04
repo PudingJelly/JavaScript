@@ -59,7 +59,7 @@
             //객체에서 min과 max의 값을 뽑아서 메세지를 완성.
             //객체 디스트럭쳐링으로 뽑아 보세요~
             const {min, max} = gameData;
-            const input = `[${min}~${max} 사이의 숫자를 입력하세요]`;
+            const input = `[${min}~${max} 사이의 숫자를 입력하세요]`;            
                         
             //사용자의 입력값을 객체에 추가
             gameData.input_num = +prompt(input);
@@ -73,7 +73,7 @@
 
             const {input_num, secret_num} = gameData;
 
-            if (input_num == secret_num) {
+            if (input_num === secret_num) {
                 alert(`정답입니다! ${gameData.count+1}번 만에 맞추셨습니다!`);
                 checkCountDown();
                 return true;
