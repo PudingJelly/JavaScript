@@ -59,8 +59,8 @@
         const $link = document.querySelector('a');
         $link.addEventListener('click', e => {
             if(!confirm('정말 이동하시겠습니까?')) {
-                return;
-                // e.preventDefault(); // 태그의 고유 기능을 막음.
+                // return; // a태그의 고유 기능은 막을 수 없음 
+                e.preventDefault(); // 태그의 고유 기능을 막음.
             }
         })
 

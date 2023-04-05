@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="checkbox" value="1"> 조항1
+    <input type="checkbox" value="2"> 조항2
+    <input type="checkbox" value="3"> 조항3
+    <input type="checkbox" value="4"> 조항4
+
+    <br>
+
+    ID: <input type="text" id="id">
+    기억하기 <input type="checkbox" id="remember">
+    <button id="check2">확인</button>
+
+
+    <script>
+        // 1. 다음 체크박스 버튼을 클릭했을 때
+        // '동의했습니다!' 경고창을 띄우고
+        // value값을 같이 찍어 주세요.
+        // (checked -> 체크 했는지의 여부)
+        const $checkbox = document.querySelectorAll('input[value]');
+
+        for (let $agree of $checkbox) {
+            $agree.addEventListener('change', e => {
+                if (e.target.checked) {
+                    alert(`동의하였습니다. ${$agree.value}`);
+                };
+            });
+        };
+
+        // 2. 확인 버튼을 클릭했을 때
+        // input 태그의 공백 여부, 체크 여부를 확인하세요.
+
+        const $gap = document.querySelector('#id');
+        const $check = document.querySelector('#remember');
+        const $button = document.querySelector('#check2');
+                    
+
+        $button.addEventListener('click', function() {
+            if($gap.value == '') {
+                alert(`아무것도 입력하지 않았습니다`);
+            }; 
+            if(!$check.checked) {
+                alert(`기억하기 체크 하지 않았습니다`);
+            };
+        });
+
+        $gap.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                $button.click();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
