@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            border: 1px solid #000;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <th>교시</th>
+            <th>훈련 과목</th>
+            <th>담당자</th>
+            <th>훈련 내용</th>
+        </thead>
+        <tbody class="todolist">
+            <tr class="list">
+                <td><input type="text" size="3"></td>
+                <td><input type="text"></td>
+                <td><input type="text" size="3"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="add5">5행 추가하기</button>
+    <button id="add1">1행 추가하기</button>
+
+    <script>
+        /*
+        사용자가 버튼을 클릭할 때마다 이벤트를 발생시켜서
+        입력창 행을 추가해 주시면 됩니다.
+        행 노드를 복사하셔서 개수만큼 추가 해 주시면 됩니다.
+        필요하다면 반복문을 이용하셔도 됩니다.
+        */
+
+        const $todolist = document.querySelector('.todolist');
+        const $list = document.querySelector('.list');
+        const $add5 = document.querySelector('#add5');
+        const $add1 = document.querySelector('#add1');
+        // const $input = document.querySelectorAll('input');       
+
+        $add5.onclick = e => {
+            const $frag = document.createDocumentFragment();
+            for (let i = 1; i <= 5; i++) {
+                const $deepClone5 = $list.cloneNode(true);
+                const $inputs = $deepClone5.querySelectorAll('td > input');
+                for(let $input of [...$inputs]) {
+                    $input.value = '';
+                }
+                
+                $frag.appendChild($deepClone5);                                            
+            }  
+            $todolist.appendChild($frag);          
+        }
+        $add1.onclick = e => {
+            // const $deepClone1 = $list.cloneNode(true);
+            $todolist.appendChild($list.cloneNode(true));            
+            [...$deepClone5.querySelectorAll('td > input')].forEach($input => {
+                $input.value = '';
+            });
+        }
+        
+    </script>
+
+</body>
+
+</html>

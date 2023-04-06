@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>단어를 선택하세요</h2>
+    <p class="msg"></p>
+
+    <hr>
+
+    <select id="selector">
+        <option value="선택">선택</option>
+        <option value="영어">Hello</option>
+        <option value="한국어">안녕</option>
+        <option value="중국어">니하오</option>
+    </select>
+
+    <!-- 
+        사용자가 선택한 인삿말의 언어에 따라
+        메세지창에 어느나라 언어인지를 띄워주시면 되겠습니다.
+        (change -> 요소의 value가 무엇인지를 판단했습니다.)
+     -->
+
+    <script>
+        const $msg = document.querySelector('.msg');
+        const $selector = document.querySelector('#selector');
+        const $option = document.querySelectorAll('option[value]');
+
+        $selector.onchange = e => {
+            // console.log($selector);
+            // console.log($selector.children);
+            // console.log(e.target);
+
+            // for(let $opt of $selector.children) {
+            //     if($opt.selected) {
+            //         if($opt.value === '영어'){
+            //             $msg.textContent = '영어입니다.';
+            //         } else if($opt.value === '한국어') {
+            //             $msg.textContent = '한국어입니다.';
+            //         } 
+            //     }
+            // }
+
+            // 선택된 옵션의 인덱스 값을 얻어오는 문법
+            // console.log($selector.options.selectedIndex);
+            // const idx = $selector.options.selectedIndex;
+            // if(idx === 1) {
+            //     $msg.textContent = '영어입니다';
+            // } else if (idx === 2) {
+            //     $msg.textContent = '한국어입니다';
+            // } else if (idx === 3) {
+            //     $msg.textContent = '중국어입니다';
+            // }
+
+            // select 요소 안에 선택된 option의 value를 바로 꺼내 오는 법
+            // console.log($selector.value);
+            if($selector.value === '선택') {
+                $msg.textContent = '';
+            } else {
+                $msg.textContent = $selector.value + '입니다';
+            }
+
+        }
+
+        // $selector.addEventListener('change', e => {
+        //     if(e.target.value == '선택') {
+        //         $msg.textContent = '';
+        //         return;
+        //     }
+        //     $msg.textContent = e.target.value + '입니다';
+
+        // });
+    </script>
+
+</body>
+
+</html>

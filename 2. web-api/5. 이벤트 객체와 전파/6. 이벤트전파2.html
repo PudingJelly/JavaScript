@@ -66,9 +66,16 @@
                 지정한 클래스를 추가하고,
                 false로 판명나면 지정한 클래스를 삭제합니다.
                 */
+
                 $li.classList.toggle('active', $li === e.target);
                 // 있으면 제거하는 기능은 동작하지만 
                 // 생성은 조건이 만족했을 경우에만 이벤트 발생
+
+                // if($li.classList.contains('active')) {
+                //     $li.classList.remove('active');
+                // }
+                // e.target.classList.add ('active');
+
             }
 
 
