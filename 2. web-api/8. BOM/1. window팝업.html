@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="popup">새 창 열기</button>
+
+
+    <script>
+
+        /*
+        BOM(Browser Object Model)
+        : 브라우저에 관련된 객체 모델
+        브라우저에 대한 여러가지 정보, 기능들이 제공하는 객체들의 집합.
+        최 상위 객체인 window 객체를 통해 메서드 사용이 가능합니다.
+        DOM도 window의 하위 객체.
+        */
+
+        const $popup = document.getElementById('popup');
+        $popup.onclick = e => {
+            window.open('https://www.naver.com', '네이버창', 'width=300, height=300, left=500, top=500, resizable=no, scrollbars=no');
+        }
+
+        $popup.key
+    </script>
+
+</body>
+</html>

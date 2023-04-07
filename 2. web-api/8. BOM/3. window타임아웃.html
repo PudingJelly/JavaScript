@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>5초 뒤에 함수가 하나 실행되는데, 이 버튼을 누르면 실행되지 않습니다.</h3>
+    
+    <button class="stop-time">취소!</button>
+
+    <script>
+
+        // 일부러 시간을 지연시키는 함수
+        const func = setTimeout(() => {
+            alert('5초뒤에 경고창 출력!');
+        }, 5000);
+
+        document.querySelector('.stop-time').onclick = e => {
+            clearTimeout(func);
+        }
+
+    </script>
+
+</body>
+</html>

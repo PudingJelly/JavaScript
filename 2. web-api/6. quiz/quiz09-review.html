@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .center {
+            text-align: center;
+        }
+
+        .content {
+            border: 1px solid #777;
+        }
+
+        .content,
+        .content .left,
+        .content .right {
+            width: 50%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        .content .left,
+        .content .right {
+            float: left;
+        }
+
+        .left .inner,
+        .right .inner {
+            border: 1px solid #777;
+            height: 300px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .memo {
+            width: 100%;
+            height: 250px;
+            box-sizing: border-box;
+            resize: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="center">
+            <h2>토글 형태 활용하기</h2>
+            <button id="btn1">어둡게 보기</button>
+            <button id="btn2" class="name">이름 보기</button>
+            <button id="btn3">메모장 모드</button>
+        </div>
+    </header>
+
+    <section>
+        <div class="content clearfix">
+            <div class="left">
+                <div class="inner"><img src="./img/1.jpg" alt="pic"></div>
+            </div>
+            <div class="right">
+                <div class="inner">
+                    <p>자바스크립트는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고
+                        있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 사이드 네트워크 프로그래밍에도 사용되고 있다.</p>
+                    <a href="http://www.naver.com">네이버로 이동</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        /*
+        어둡게 보기 / 밝게 보기 모드는 
+        body의 background 색깔을 검정 / 흰색으로
+        글씨 색깔을 그에 맞춰서 흰색 / 검정으로 지정하시면 됩니다.
+        버튼 글씨 바꿔 주세요.
+        클래스 이름을 dark, light 등으로 추가해서 구분을 했습니다.
+        참고로 글씨 색깔을 바꿔줘야 하는 태그는 p, h2, a 입니다.
+        */
+
+        /*
+        클래스 이름을 통해서 이름 보기 모드인지를 확인.
+        안에 있는 내용들은 innerHTML로 삽입.
+        버튼도 '이름 보기', '내용 보기'로 지정.
+        p태그 안의 내용만 바꿔 주시면 됩니다.
+        */
+
+        /*
+        메모장 보기 모드는 textarea를 생성해서 추가.
+        클래스 이름 memo 속성을 추가해 주세요.
+        버튼 이름은 '사진 모드'로 지정해 주시면 됩니다.
+        .left 안에 있는 .inner의 모든 자식 노드를 제거하고
+        생성하신 요소를 추가해 주시면 되겠습니다.
+        */
+
+        // 이름 보기 모드 텍스트
+        // 홍길동<br>20세<br>능력단위<br>Java, Oracle, Jsp, CSS, JavaScript
+
+        const $btn1 = document.getElementById('btn1');
+        const $tags = document.querySelectorAll('p, h2, a');
+
+        $btn1.onclick = function() {
+            $btn1.classList.toggle('dark');
+
+            if($btn1.classList.contains('dark')) {
+                // 어둡게 보기 모드
+                document.body.style.backgroundColor = 'black';
+                [...$tags].forEach($ele => $ele.style.color = 'white');
+                $btn1.textContent = '밝게 보기'; 
+            } else {
+                // 밝게 보기 모드
+                document.body.style.backgroundColor = 'white';
+                [...$tags].forEach($ele => $ele.style.color = 'black');
+                $btn1.textContent = '어둡게 보기';                
+            }
+        }
+
+        const $btn2 = document.getElementById('btn2');
+        const $content = document.querySelector('.right .inner > p');
+        const $a = document.querySelector('.right .inner > a');
+
+        $btn2.addEventListener('click', e => {
+            if($btn2.className === 'name') {
+                // $content.textContent = '';
+                // $content.insertAdjacentHTML('afterbegin', '홍길동<br>20세<br>능력단위<br>Java, Oracle, Jsp, CSS, JavaScript');
+                $content.innerHTML = '홍길동<br>20세<br>능력단위<br>Java, Oracle, Jsp, CSS, JavaScript';
+                $a.style.display = 'none';
+                $btn2.textContent = '내용 보기';
+                $btn2.className = 'conView';
+            } else {
+                $content.innerHTML = '자바스크립트는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 사이드 네트워크 프로그래밍에도 사용되고 있다.'
+                $a.style.display = 'block';
+                $btn2.textContent = '이름 보기';
+                $btn2.className = 'name';
+            }
+        });
+
+        const $btn3 = document.getElementById('btn3');
+
+        $btn3.onclick = e => {
+            const $inner = document.querySelector('.left > .inner');
+            
+            for(let $ele of [...$inner.children]) {
+                $inner.removeChild($ele);
+            }
+
+            $btn3.classList.toggle('write');
+            if($btn3.className === 'write') {
+                const $textarea = document.createElement('textarea');
+                $textarea.className = ('memo');
+                const $regbtn = document.createElement('button');
+                $regbtn.textContent = '등록하기';
+                const $frag = document.createDocumentFragment();
+                $frag.appendChild($textarea)
+                $frag.appendChild($regbtn);
+                $inner.appendChild($frag);
+                $btn3.textContent = '사진모드';                
+            } else {
+                const $img = document.createElement('img');
+                $img.setAttribute('src', './img/1.jpg');
+                $inner.appendChild($img);
+                $btn3.textContent = '메모장 모드';
+            }
+        }
+
+    </script>
+    
+</body>
+
+</html>
