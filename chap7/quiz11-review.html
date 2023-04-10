@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        thead th,
+        tbody td {
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2>이벤트 위임 방식으로 변경해 보세요.</h2>
+
+    <table>
+        <thead>
+            <th>번호</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>삭제</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button>삭제</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>두번째 글</td>
+                <td>hi</td>
+                <td><button>삭제</button></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>세번째 글</td>
+                <td>hi</td>
+                <td><button>삭제</button></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>네번째 글</td>
+                <td>hi</td>
+                <td><button>삭제</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        /*
+	이벤트 전파 방식을 사용해서 
+	삭제를 누를 때마다 해당 tr이 지워질 수 있도록 처리해 보세요.
+   */
+        const $list = document.querySelector('tbody');
+        console.log($list);
+
+        $list.addEventListener('click', function() {
+            // 매개변수를 선언하지 않으면 이벤트 객체를 못쓰냐? 아닙니다.
+            // event라는 이름으로 바로 사용이 가능합니다.
+            // 하지만 왠만하면 이름을 붙여서 쓰는것을 권장합니다.
+            // console.log(event.target);
+            if(!event.target.matches('button')){
+                return;
+            }
+            // 삭제 버튼이 눌리면 그 삭제 버튼이 포함된 tr을 날리자
+            // event.target.parentNode.parentNode.remove();
+            $list.removeChild(event.target.parentNode.parentNode);
+        });
+
+
+        // const $tbody = document.querySelector('tbody');
+
+        // $tbody.onclick = e => {
+        //     if(e.target.matches('button')) {
+        //         $tbody.removeChild(e.target.parentNode.parentNode);
+        //     }
+        // }
+
+    </script>
+
+</body>
+
+</html>

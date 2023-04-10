@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul li {
+            display: inline-block;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h3>다중 이벤트 처리</h3>
+    <div>
+        <ul>
+            <li><img src="./img/1.jpg" alt="1" width="100px"></li>
+            <li><img src="./img/2.jpg" alt="2" width="100px"></li>
+            <li><img src="./img/3.jpg" alt="3" width="100px"></li>
+            <li><img src="./img/4.jpg" alt="4" width="100px"></li>
+        </ul>
+        결과:
+        <div class="result">
+            <img src="./img/1.jpg" alt="결과" width="300px">
+        </div>
+    </div>
+
+    <script>
+	
+	/*
+	사진을 클릭할 때마다 결과 화면이 그 사진으로 바뀌면 됩니다. 
+	*/
+
+    const $ul = document.querySelector('ul');
+    const $img = document.querySelector('.result img');
+
+    $ul.addEventListener('click', function(e) {
+        if(!e.target.matches('ul > li > img')){
+            return;
+        }
+        // $img.setAttribute('src', e.target.getAttribute('src'));
+        $img.setAttribute('src', e.target.src);
+    });
+      
+    // const $li = document.querySelectorAll('li');
+    // const $result =document.querySelector('.result > img');
+
+    // for(let i=0; i<$li.length; i++) {
+    //     $li[i].onclick = e => {
+    //         $result.setAttribute('src', `./img/${i+1}.jpg`);
+    //     }    
+    // }
+
+
+    </script>
+    
+</body>
+</html>
