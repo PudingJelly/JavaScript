@@ -60,9 +60,10 @@
     </div>
 
     <script>
+
         /*
 
-	메뉴를 클릭할 때마다 해당 토글 메뉴가 뜨면 됩니다.
+	    메뉴를 클릭할 때마다 해당 토글 메뉴가 뜨면 됩니다.
 
         1. ul에 이벤트 전파 이용해서 클릭이벤트를 걸고
          클릭되는 타겟의 data-id를 얻습니다.
@@ -71,32 +72,21 @@
         */
 
         const $toggle = document.querySelector('.toggle');
-        $toggle.onclick = e => {
-            if(!e.target.matches('.toggle > li')) return;
+        $toggle.onclick = function(e) {
+            if(!e.target.matches('.toggle > li')) {
+                return;
+            }
 
             const $toggleList = document.querySelectorAll('.toggle-menu');
-            
+
             for(let $ele of [...$toggleList]) {
-                $ele.classList.toggle('active', document.querySelector('e.target.dataset.id') === $ele);
-            }           
-        }
-        
+                $ele.classList.toggle('active', document.querySelector(e.target.dataset.id) === $ele);
+            }
 
-        // const $toggle = document.querySelector('.toggle');
-        // const $toggleMenu = document.querySelectorAll('.toggle-menu'); 
-        // console.log($toggle);
+            // [...$toggleList].forEach($ele => $ele.classList.toggle('active', document.querySelector(e.target.dataset.id) === $ele));
+        };
 
-        // $toggle.onclick = e => {            
-        //     const $dataId = e.target.getAttribute('data-id');
 
-        //     for (let i=0; i<$toggle.children.length; i++) {
-        //         if($toggleMenu[i].matches($dataId)){
-        //             $toggleMenu[i].classList.add('active');
-        //         } else {
-        //             $toggleMenu[i].classList.remove('active');
-        //         }
-        //     }
-        // }
     </script>
 
 </body>

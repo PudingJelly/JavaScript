@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 외부 자바스크립트 파일을 현재 파일로 임포트 -->
+    <script src="./popup.js"></script>
+
+</head>
+
+<body>
+
+    <h2>메인 화면</h2>
+
+    <div>
+        메인 화면이라고 칩시다
+    </div>
+
+    <script>
+        window.onload = function () { // 윈도우창이 로딩된 후 바로 실행할 내용
+            if (!getCookie('popup')) {
+                window.open('popup.html', '메인팝업창', 'width=300, height=300, top=200, left=200');
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
